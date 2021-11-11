@@ -199,9 +199,7 @@ const displayList = (items,page,rowsPerPage) =>{
   let start = rowsPerPage * page;
   let end = start + rowsPerPage;
   let paginatedItems = items.slice(start,end);
-  let newState = {
-    breweries: paginatedItems,
-  };
+  let newState = {breweries: paginatedItems};
   listUpdate(newState);
 }
 
@@ -213,9 +211,7 @@ const showResultOfSearch = (stateUpdate,value) => {
       return eachBrew
     }
   })
-  let newState = {
-    breweries: filteredSearch, 
-  };
+  let newState = {breweries: filteredSearch};
   const btncontainer = document.querySelector('.btn-container')
   if(newState.breweries.length< 9){btncontainer.classList.add('hidden')}
   listUpdate(newState);
@@ -240,9 +236,7 @@ const getSearchValue = (stateUpdate) => {
 const clearFilter = (stateUpdate,target) => {
   const clearBtn = document.querySelector('.clear-all-btn');
   clearBtn.addEventListener('click', () => {
-    if(target){
-      target.checked = false;
-    }
+    if(target){target.checked = false}
     listUpdate(stateUpdate)
   })
 }
@@ -282,9 +276,7 @@ function removeUncheckedValue(valueCity,stateUpdate){
   array = array.filter(function(value, index) {
     return indexArray.indexOf(index) == -1;
   })
-  let newState = {
-    breweries: array,
-  };
+  let newState = {breweries: array};
   listUpdate(newState);
   if(paginationBtn){
     paginationBtn.classList.add('hidden');
